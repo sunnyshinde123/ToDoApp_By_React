@@ -1,0 +1,11 @@
+.container{
+  margin-top: 2rem;
+}
+
+button{
+    min-width: 70%;
+}
+
+.kg-row{
+    border-bottom: 2px solid black;
+}
