@@ -8,7 +8,7 @@ stages:
 build_Job:
     stage: build
     script:
-        - docker build -t todo-react-app:latest .
+        - docker build -t todo-react-app:latest /HealthyApp/.
         - echo "Docker image build successfully"
     tags:
         - aws-test
