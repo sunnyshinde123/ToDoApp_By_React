@@ -10,24 +10,32 @@ build_Job:
     script:
         - docker build -t todo-react-app:latest .
         - echo "Docker image build successfully"
+    tags:
+        - aws-test
 
 test_Job:
     stage: test
     script:
         - echo "There is no tests"
+    tags:
+        - aws-test
 
 push_Job:
     stage: push
     script:
-        - docker image tag todo-react-app:latest $dockerUser/todo-react-app:latest
-        - echo "$dockerPass" | docker login -u $dockerUser --password-stdin
-        - docker push $dockerUser/todo-react-app:latest
+        - docker image tag todo-react-app:latest $DOCKER_USER/todo-react-app:latest
+        - echo "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin
+        - docker push $DOCKER_USER/todo-react-app:latest
         - echo "Image push successfully"
+    tags:
+        - aws-test
 
 deploy_Job:
     stage: deploy
     script:
         - docker run -d -p 5173:5173 todo-react-app:latest
         - echo "Application running successfully on port of 5173"
+    tags:
+        - aws-test
         
 
