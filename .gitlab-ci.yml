@@ -7,18 +7,18 @@ stages:
 
 build_Job:
     stage: build
-    scripts:
+    script:
         - docker build -t todo-react-app:latest .
         - echo "Docker image build successfully"
 
 test_Job:
     stage: test
-    scripts:
+    script:
         - echo "There is no tests"
 
 push_Job:
     stage: push
-    scripts:
+    script:
         - docker image tag todo-react-app:latest $dockerUser/todo-react-app:latest
         - echo "$dockerPass" | docker login -u $dockerUser --password-stdin
         - docker push $dockerUser/todo-react-app:latest
@@ -26,7 +26,7 @@ push_Job:
 
 deploy_Job:
     stage: deploy
-    scripts:
+    script:
         - docker run -d -p 5173:5173 todo-react-app:latest
         - echo "Application running successfully on port of 5173"
         
