@@ -37,7 +37,7 @@ export default function HealthyInputBar({onbtnClick}){
             <input type="date" className="form-input" name="date" value={data.date} onChange={handleOnChange} required/>
             </div>
             <div className="col-2">
-            <button className="btn btn-success">Add</button>
+            <button className="btn btn-success">Add Items</button>
             </div>
         </form>
         </div>
