@@ -23,7 +23,7 @@ pipeline{
         }
         stage("Push to Hub"){
             steps{
-                dockerpush("DockerHub", "todo-react-app", "latest")
+                dockerpush("cred", "todo-react-app", "latest")
             }
         }
         stage("Deploy"){
